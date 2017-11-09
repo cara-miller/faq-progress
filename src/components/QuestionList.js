@@ -14,7 +14,7 @@ const QuestionList = props => {
         question = {element.question}
         answer = {element.answer}
         handleClick = {handleClick}
-
+        stateID = {props.stateID}
       />
     )}
   )

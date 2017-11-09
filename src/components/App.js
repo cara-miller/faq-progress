@@ -6,15 +6,17 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state= {
-      id: null
+      cachedID: null
     }
     this.setSelectedQuestion=this.setSelectedQuestion.bind(this)
   }
 
-  setSelectedQuestion(id) {
-    this.setState({
-      id: id
-    })
+  setSelectedQuestion(componentID) {
+    if (componentID === this.state.cachedID) {
+      this.setState({cachedID: null})
+    } else {
+      this.setState({cachedID: componentID})
+    }
   }
 
 
@@ -25,6 +27,7 @@ class App extends React.Component {
         <QuestionList
           data={this.props.data}
           setSelectedQuestion={this.setSelectedQuestion}
+          stateID={this.state.cachedID}
         />
       </div>
     )
